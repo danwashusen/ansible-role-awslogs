@@ -19,6 +19,10 @@ Role Variables
             datetime_format: "%b %d %H:%M:%S"
             log_group_name: syslog
 
+- `awslogs_http_proxy`: The HTTP proxy to use (if any)
+
+- `awslogs_https_proxy`: The HTTPS proxy to use (if any)
+
 Example Playbook
 ----------------
 

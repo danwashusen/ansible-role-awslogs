@@ -26,3 +26,23 @@
     systemd: name=awslogs state=started enabled=yes daemon_reload=yes
     when: ansible_distribution_release == 'xenial'
   when: awslogs_manage
+
+- name: Configure the http proxy
+  lineinfile:
+    dest: /var/awslogs/etc/proxy.conf
+    regexp: "^HTTP_PROXY"
+    line: "HTTP_PROXY={{ awslogs_http_proxy }}"
+    state: present
+    create: true
+  notify: restart awslogs
+  when: awslogs_http_proxy is defined
+
+- name: Configure the https proxy
+  lineinfile:
+    dest: /var/awslogs/etc/proxy.conf
+    regexp: "^HTTPS_PROXY"
+    line: "HTTPS_PROXY={{ awslogs_http_proxy }}"
+    state: present
+    create: true
+  notify: restart awslogs
+  when: awslogs_https_proxy is defined
