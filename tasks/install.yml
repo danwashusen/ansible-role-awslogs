@@ -6,6 +6,12 @@
     dest: /tmp/awslogs-agent-setup.py
     mode: 0750
 
+- name: Download the cloudwatch logs dependencies
+  unarchive:
+    src: https://s3.amazonaws.com/aws-cloudwatch/downloads/latest/AgentDependencies.tar.gz
+    dest: /tmp
+    remote_src: yes
+
 - name: Ensure OS Distro is in /etc/issue
   lineinfile:
     path: /etc/issue
