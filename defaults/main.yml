@@ -4,4 +4,4 @@ awslogs_install: True
 awslogs_manage: True
 
 awslogs_config: []
-awslogs_install_command: "python /tmp/awslogs-agent-setup.py -n -r {{ec2_region | default('us-east-1')}} --dependency-path /tmp/AgentDependencies -c /tmp/awslogs.conf"
+awslogs_install_command: "python /tmp/awslogs-agent-setup.py -n -r {{ansible_ec2_placement_region | default('us-east-1')}} --dependency-path /tmp/AgentDependencies -c /tmp/awslogs.conf"

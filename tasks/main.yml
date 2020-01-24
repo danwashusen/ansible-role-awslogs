@@ -19,7 +19,11 @@
     notify: restart awslogs
 
   - name: Start and enable awslogs systemd service
-    systemd: name=awslogs state=started enabled=yes daemon_reload=yes
+    systemd:
+      name: awslogs
+      state: started
+      enabled: yes
+      daemon_reload: yes
   when: awslogs_manage
 
 - name: Configure the http proxy
