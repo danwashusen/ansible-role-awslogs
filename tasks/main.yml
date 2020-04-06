@@ -40,7 +40,7 @@
   lineinfile:
     dest: /var/awslogs/etc/proxy.conf
     regexp: "^HTTPS_PROXY"
-    line: "HTTPS_PROXY={{ awslogs_http_proxy }}"
+    line: "HTTPS_PROXY={{ awslogs_https_proxy }}"
     state: present
     create: true
   notify: restart awslogs
